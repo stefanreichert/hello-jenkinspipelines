@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Create Docker image') {
             steps {
-                docker build -t hello-jenkinspipelines .
+                sh 'docker build -t hello-jenkinspipelines .'
             }
         }
     }
