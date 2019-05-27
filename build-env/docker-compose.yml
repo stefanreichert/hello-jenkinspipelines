@@ -7,7 +7,19 @@ services:
       - '443:8443'
       - '50000:50000'
     volumes:
-      - 'jenkins_data:/jenkins_config'
-volumes:
-  jenkins_data:
-    driver: local
+      - '~/tmp/docker/jenkins/data:/jenkins_config'
+    networks:
+      - 'local_build_env'
+  registry:
+    restart: always
+    image: 'registry:2'
+    ports:
+      - '5000:5000'
+    volumes:
+      - '~/tmp/docker/doker-registry/data:/var/lib/registry'
+      - '~/tmp/docker/doker-registry/certs:/certs'
+      - '~/tmp/docker/doker-registry/auth:/auth'
+    networks:
+      - 'local_build_env'
+networks:
+  local_build_env:
