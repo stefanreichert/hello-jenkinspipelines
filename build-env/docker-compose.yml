@@ -1,13 +1,18 @@
 version: '2'
 services:
   jenkins:
-    image: 'jenkins/jenkins:lts'
+    build: .
+    image: 'jenkins_withmaven'
     ports:
       - '8081:8080'
       - '443:8443'
       - '50000:50000'
+    environment:
+      - PLUGINS_FORCE_UPGRADE=true
     volumes:
-      - '~/tmp/docker/jenkins/data:/jenkins_config'
+      - '~/tmp/docker/jenkins/home:/var/jenkins_home'
+      - '~/tmp/docker/maven/home:/usr/jenkins/.m2'
+      - '/var/run/docker.sock:/var/run/docker.sock'
     networks:
       - 'local_build_env'
   registry:
