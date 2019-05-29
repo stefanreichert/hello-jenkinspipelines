@@ -7,17 +7,20 @@ pipeline {
     stages {
         stage('build and test Application') {
             steps {
+                echo 'building application version env.VERSION ...'
                 sh 'mvn clean verify'
             }
         }
         stage('create Docker image') {
             steps {
+                echo 'building docker image version env.VERSION ...'
                 sh 'sudo docker build -t hello-jenkinspipelines:$VERSION .'
                 sh 'sudo docker tag hello-jenkinspipelines:$VERSION hello-jenkinspipelines:latestBuild'
             }
         }
-        stage('tag and push Docker image to local registry') {
+        stage('tag and push Docker image to registry') {
             steps {
+                echo 'pushing version env.VERSION to registry at env.REGISTRY_HOST ...'
                 sh 'sudo docker tag hello-jenkinspipelines:$VERSION $REGISTRY_HOST/hello-jenkinspipelines:$VERSION'
                 sh 'sudo docker push $REGISTRY_HOST/hello-jenkinspipelines:$VERSION'
                 sh 'sudo docker tag hello-jenkinspipelines:$VERSION $REGISTRY_HOST/hello-jenkinspipelines:latestBuild'
