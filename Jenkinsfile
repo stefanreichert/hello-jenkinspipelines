@@ -2,9 +2,6 @@ pipeline {
     agent any
     environment {
         REGISTRY_HOST = 'localhost:5000'
-        MAJOR_VERSION = '1'
-        MINOR_VERSION = '0'
-        TRAILING_VERSION = '0'
         VERSION = buildVersionString()
     }
     stages {
@@ -30,5 +27,5 @@ pipeline {
     }
 }
 def buildVersionString() {
-    return env.MAJOR_VERSION + '.' + env.MINOR_VERSION + '.' + env.TRAILING_VERSION + '_' + env.BUILD_NUMBER
+    return '1.0.0_' + env.BUILD_NUMBER
 }
