@@ -19,7 +19,7 @@ pipeline {
         stage('tag and push Docker image to local registry') {
             steps {
                 sh 'sudo docker tag hello-jenkinspipelines:$VERSION $REGISTRY_HOST/hello-jenkinspipelines:$VERSION'
-                sh 'sudo docker push $REGISTRY_HOST/hello-jenkinspipelines:VERSION'
+                sh 'sudo docker push $REGISTRY_HOST/hello-jenkinspipelines:$VERSION'
                 sh 'sudo docker tag hello-jenkinspipelines:$VERSION $REGISTRY_HOST/hello-jenkinspipelines:latestBuild'
                 sh 'sudo docker push $REGISTRY_HOST/hello-jenkinspipelines:latestBuild'
             }
