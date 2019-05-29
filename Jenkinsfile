@@ -8,7 +8,7 @@ pipeline {
         VERSION = buildVersionString()
     }
     def buildVersionString() {
-        return env.MAJOR_VERSION + '.' + env.MINOR_VERSION + '.' + env.TRAILING_VERSION + '_' + env.BUILD_NUMBER'
+        return env.MAJOR_VERSION + '.' + env.MINOR_VERSION + '.' + env.TRAILING_VERSION + '_' + env.BUILD_NUMBER
     }
     stages {
         stage('build and test Application') {
