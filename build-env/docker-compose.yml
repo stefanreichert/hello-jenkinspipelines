@@ -3,9 +3,10 @@ services:
   jenkins:
     build: .
     image: 'jenkins_withmaven'
+    container_name: 'jenkins'
     ports:
       - '8081:8080'
-      - '443:8443'
+      - '8443:8443'
       - '50000:50000'
     environment:
       - PLUGINS_FORCE_UPGRADE=true
@@ -14,17 +15,27 @@ services:
       - '~/tmp/docker/maven/home:/usr/jenkins/.m2'
       - '/var/run/docker.sock:/var/run/docker.sock'
     networks:
-      - 'local_build_env'
+      - 'local'
   registry:
     restart: always
     image: 'registry:2'
+    container_name: 'registry-core'
     ports:
       - '5000:5000'
     volumes:
       - '~/tmp/docker/doker-registry/data:/var/lib/registry'
-      - '~/tmp/docker/doker-registry/certs:/certs'
-      - '~/tmp/docker/doker-registry/auth:/auth'
     networks:
-      - 'local_build_env'
+      - 'local'
+  registry-web:
+    restart: always
+    image: 'hyper/docker-registry-web'
+    container_name: 'registry-web'
+    environment:
+      - 'REGISTRY_NAME=registry-core:5000'
+      - 'REGISTRY_URL=http://registry-core:5000/v2'
+    ports:
+      - '8082:8080'
+    networks:
+      - 'local'
 networks:
-  local_build_env:
+  local:
