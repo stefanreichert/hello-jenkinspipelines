@@ -22,6 +22,9 @@ services:
     container_name: 'registry-core'
     ports:
       - '5000:5000'
+    environment:
+      - 'REGISTRY_HTTP_ADDR=registry-core:5000'
+      - 'REGISTRY_HTTP_RELATIVEURLS=true'
     volumes:
       - '~/tmp/docker/doker-registry/data:/var/lib/registry'
     networks:

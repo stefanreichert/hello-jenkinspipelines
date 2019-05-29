@@ -28,6 +28,11 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        }
+    }
 }
 def buildVersionString() {
     return '1.0_' + env.BUILD_NUMBER
