@@ -5,7 +5,10 @@ pipeline {
         MAJOR_VERSION = '1'
         MINOR_VERSION = '0'
         TRAILING_VERSION = '0'
-        VERSION = '$MAJOR_VERSION.$MINOR_VERSION.$TRAILING_VERSION_$BUILD_NUMBER'
+        VERSION = buildVersionString()
+    }
+    def buildVersionString() {
+        return env.MAJOR_VERSION + '.' + env.MINOR_VERSION + '.' env.TRAILING_VERSION + '_' + env.BUILD_NUMBER'
     }
     stages {
         stage('build and test Application') {
