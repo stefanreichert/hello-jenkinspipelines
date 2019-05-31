@@ -31,4 +31,8 @@ exposing your registry content. your buil results will show up here.
 
 ### Noteworthy
 There will be state on your host machine...
+* Jenkins home folder ``~/tmp/docker/jenkins/home``
+* Maven home folder ``~/tmp/docker/maven/home``
 
+In order to allow _Docker_ tooling inside a _Docker_ image, the Jenkins images maps the _Docker_ socket file as volume to share the engine
+with the image. Seems to good practice ;)
