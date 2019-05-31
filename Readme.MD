@@ -22,17 +22,17 @@ Simply execute ``docker-compose build`` to build the respective docker images an
 ``/build-env`` folder. Hello _Jenkins_ at ``http://localhost:8081``. You need to setup your Jenkins, please do as
 you're told ;)
 ### Create a Jenkins project
-Create a _Multi-Branch Project_ on your Jenkins Build Server. Map the project to 
+Create a _Multi-Branch Project_ on your _Jenkins_ build server. Map the project to 
 ``github.com:stefanreichert/hello-jenkinspipelines.git`` (or any other project you like...). Your project will be 
-build, the result will be pushed to your local _Docker_ registry at ``http://localhost:5000``. That's it basically...
+built, the result will be pushed to your local _Docker_ registry at ``http://localhost:5000``. That's basically it...
 ### Watch the result
-There is a registry UI deployed with the infrastructure. at ``http://localhost:8082`` you will find a web frontend
-exposing your registry content. your buil results will show up here.
+There is a registry UI deployed with the infrastructure. At ``http://localhost:8082`` you will find a web frontend
+exposing your registry content. Your build results will show up here.
 
 ### Noteworthy
 There will be state on your host machine...
 * Jenkins home folder ``~/tmp/docker/jenkins/home``
 * Maven home folder ``~/tmp/docker/maven/home``
 
-In order to allow _Docker_ tooling inside a _Docker_ image, the Jenkins images maps the _Docker_ socket file as volume to share the engine
+In order to allow _Docker_ tooling inside a _Docker_ image, the _Jenkins_ images maps the _Docker_ socket file as volume to share the engine
 with the image. Seems to good practice ;)
