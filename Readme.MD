@@ -1,5 +1,5 @@
 # Hello Jenkins Pipelines
-This projekt is a simple example how to use _Jenkins Pipelines_ to build an containerize a projekt, having the 
+This projekt is a simple example how to use _Jenkins Pipelines_ to build and containerize a project, having the 
 infrastructure available as _Docker_ image as well. The project is based on _Java_/_SpringBoot_ and is packaged and 
 containerized with _Docker_.
 
