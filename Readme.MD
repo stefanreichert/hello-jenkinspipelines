@@ -23,8 +23,7 @@ Simply execute ``docker-compose build`` to build the respective docker images an
 you're told ;)
 ### Create a Jenkins project
 Create a _Multi-Branch Project_ on your _Jenkins_ build server. Map the project to 
-``github.com:stefanreichert/hello-jenkinspipelines.git`` (or any other project you like...). Your project will be 
-built, the result will be pushed to your local _Docker_ registry at ``http://localhost:5000``. That's basically it...
+``github.com:stefanreichert/hello-jenkinspipelines.git`` (or any other project you like...). Since the build server will use the ``Jenkinsfile`` no further configuration is required. Your project will automatically be built, the result will be pushed to your local _Docker_ registry at ``http://localhost:5000``. That's basically it...
 ### Watch the result
 There is a registry UI deployed with the infrastructure. At ``http://localhost:8082`` you will find a web frontend
 exposing your registry content. Your build results will show up here.
